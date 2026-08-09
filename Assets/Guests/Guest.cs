@@ -7,22 +7,16 @@ public class Guest : MonoBehaviour
     // public family
 
 
-    private void Awake() {
+    public Guest() {
         reqs = new RoomRequirement(
             size: 30,
-            luxuryRating: 4.0f,
-            humidity: Humidity.Normal,
-            cleanliness: 8.0f,
-            // floor omitted -> no preference
-            bedCount: 1,
-            bedSizes: new List<BedSize> { BedSize.Twin },
-            windowCount: 1,
-            tableCount: 1,
-            seatCount: 2);
+            bedCount: 1);
     }
 
     public bool Request(int from, int to) {
         // Send reqs and dates to Hotel Ledger
         return true;
     }
+
+    // Manage guest spawning
 }

@@ -20,6 +20,14 @@ public class Hotel : MonoBehaviour
         Instance = this;
     }
 
+    public void RegisterRoom(Room room) {
+        rooms.Add(room, new List<int>());
+    }
+
+    public void UnregisterRoom(Room room) {
+        rooms.Remove(room);
+    }
+
     public List<int> GetAvailability(Room room) {    
         List<int> avaialableDays = new List<int>();
 

@@ -1,16 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Guest : MonoBehaviour
+public class Guest
 {
     public RoomRequirement reqs;
-    // public family
+    // public familyWithThem
 
 
-    public Guest() {
+    public Guest(int _size = -1, int _bedCount = -1) {
         reqs = new RoomRequirement(
-            size: 30,
-            bedCount: 1);
+            _size: _size,
+            _bedCount: _bedCount);
     }
 
     public bool Request(int from, int to) {

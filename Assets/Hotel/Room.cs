@@ -1,49 +1,32 @@
-using UnityEngine;
+// using UnityEngine;
 using System.Collections.Generic;
 
 
-public enum Humidity {
-    Dry, Normal, Wet
-} 
-public enum BedSize {
-    Twin, Full, Queen, King
-}
+public class RoomRequirement {
+    public int size = -1;
+    public int bedCount = -1;
 
-public struct RoomRequirement {
-    public int? Size;
-    public int? BedCount;
-
-    public RoomRequirement(int? size = null, int? bedCount = null) {
-        this.Size = size;
-        this.BedCount = bedCount;
-    }
-}
-
-public struct RoomStats
-{
-    public int? Size;
-    public int? BedCount;
-
-    public RoomStats(int? size = null, int? bedCount = null) {
-        this.Size = size;
-        this.BedCount = bedCount;
+    public RoomRequirement(int _size, int _bedCount) {
+        this.size = _size;
+        this.bedCount = _bedCount;
     }
 }
 
 
-public class Room : MonoBehaviour
-{
-    public RoomStats stats;
+public class Room {
+    public int size = -1;
+    public int bedCount = -1;
 
-
-    public Room(int? size = null, int? bedCount = null) { // Regsiter room in ledger on creation
-        stats = new RoomStats(size, bedCount);
+    public Room(int _size, int _bedCount) { 
+        size = _size;
+        bedCount = _bedCount;
         Hotel.Instance.RegisterRoom(this);
     }
 
+
     public bool HasReq(RoomRequirement req) {
-        if (req.Size != null            && req.Size != stats.Size)                  { return false; }
-        if (req.BedCount != null        && req.BedCount != stats.BedCount)          { return false; }
+        if (req.size != -1      && req.size != size)          { return false; }
+        if (req.bedCount != -1  && req.bedCount != bedCount)  { return false; }
 
         return true;
     }
